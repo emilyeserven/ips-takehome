@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import States from './components/States';
+import StatesHOC from './components/StatesHOC';
 import Guess from './components/Guess';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
         <button className="menu-item" onClick={(e) => handleClick("states", e)}>States</button>
         <button className="menu-item" onClick={(e) => handleClick("guess", e)}>Guess</button>
       </div>
-      { tab === "states" ? <States /> : <Guess />}
+      { tab === "states" ? <StatesHOC /> : <Guess />}
     </div>
   );
 }

@@ -1,20 +1,14 @@
 import './States.css';
 import React, {useState} from 'react';
 import StatePopup from './StatePopup';
-import data from './states.json';
 import {uppercaseFirstLetter} from '../utils.js';
 
-const statesData = [];
 
-for (let i = 0; i < data.statesInfo.states.length; i++) {
-    // Loop through the JSON and make it easier to access
-    statesData.push(data.statesInfo.states[i]['@attributes']);
-}
 
-function States() {
+function States(props) {
     const [popupVisible, setPopupVisible] = useState(false);
     const [selectedState, setSelectedState] = useState("");
-
+    console.log(props);
 
     /* TODO:
     * Move selected state to State Manager, clean up data for the state manager
@@ -22,9 +16,10 @@ function States() {
     */
     function handleStateClick(abbr, e) {
         e.preventDefault();
-        let stateClicked = statesData.filter(state => state.abbreviation === abbr);
+        let stateClicked = props.states.filter(state => state.abbreviation === abbr);
         stateClicked = stateClicked[0];
         setSelectedState(stateClicked);
+        props.changeState(abbr);
         setPopupVisible(true);
     }
 
@@ -32,7 +27,7 @@ function States() {
         setPopupVisible(false);
     }
 
-    const statesList = statesData.map((state) =>
+    const statesList = props.states.map((state) =>
         <li key={state.abbreviation} className="listItem" onClick={(e) => handleStateClick(state.abbreviation, e)}>
             {uppercaseFirstLetter(state.name)}
         </li>
