@@ -1,0 +1,18 @@
+.popup {
+    width: 500px;
+    background-color: #fff;
+    border: 2px solid #000;
+    margin-top: 2em;
+    position:fixed;
+    padding: 8px 12px;
+    top:0;
+    left: 25%;
+}
+
+.stateFlag {
+    width: 80%;
+    margin: 0 auto 15px;
+}
+.stateFlag img {
+    max-width: 100%;
+}
